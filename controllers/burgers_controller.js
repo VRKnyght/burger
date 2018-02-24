@@ -12,7 +12,7 @@ const router = express.Router();
 // ============================================================================================================
 router.get("/", (req, res) => {
 	burger.all((data) => {
-		var hbsObject = {
+		const hbsObject = {
 			burgers: data
 		};
 		console.log("hbsObject" + hbsObject);
@@ -20,21 +20,20 @@ router.get("/", (req, res) => {
 	});
 });
 
-router.post("/api/burgers/:id", (req, res) => {
-	burger.create(["name", "cooked", "devoured"], [req.body.name, req.body.cooked, req.body.devoured], (result) => {
+router.post("/api/burgers", (req, res) => {
+	burger.create(["burger_name", "cooked", "devoured"], [req.body.name, req.body.cooked, req.body.devoured], (result) => {
 		res.json({ id: result.insertId });
 	});
 });
 	
 router.put("/api/burgers/:id", (req, res) => {
-	let condition = "id = " + req.params.id;
+	const condition = "id = " + req.params.id;
 
 	console.log("[burgers_controller.js] condition: " + condition);
 
 	burger.update(
 		{
-			cooked: req.body.cooked,
-			devoured: req.body.devoured
+			cooked: req.body.cooked
 		},
 		condition,
 		(result) => {
@@ -48,7 +47,7 @@ router.put("/api/burgers/:id", (req, res) => {
 });
 
 router.delete("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
 
   burger.delete(condition, function(result) {
     if (result.affectedRows == 0) {

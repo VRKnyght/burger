@@ -8,7 +8,7 @@ $(() => {
 			cooked: newCook
 		};
 
-		$.ajax("/api/burgers" + id, {
+		$.ajax("/api/burgers/" + id, {
 			type: "PUT",
 			data: newCookState
 		}).then( () => {
@@ -29,7 +29,7 @@ $(() => {
 
 		$.ajax("/api/burgers", {
 			type: "POST",
-			data: newCat
+			data: newBurger
 		}).then( () => {
 			console.log("created new burger")
 
