@@ -14,8 +14,8 @@
 
 <ul>
 	{{#each burgers}}
-		{{#if cooked}}
-			{{> burgers/burger-block cooked=false}}
+		{{#if devoured}}
+			{{> burgers/burger-block devoured=true}}
 		{{/if}}
 	{{/each}}
 </ul>
